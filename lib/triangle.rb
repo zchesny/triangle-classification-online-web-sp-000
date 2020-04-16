@@ -10,13 +10,20 @@ class Triangle
   end 
 
   def kind
-    if l1 == l2 && l2 == l3
-      return :equilateral
-    elsif l1 == l2 || l2 == l3 || l1 == l3
-      return :isosceles
+    validate_traingle
+    if a == b && b == c
+      :equilateral
+    elsif a == b || b == c || a == c
+      :isosceles
     else
-      return :scalene
+      :scalene
     end
+  end
+
+  def validate_traingle
+    real_traingle = [(a + b > c), (b + c > a), (a + c > b)]
+    [a, b, c].each{|side| real_traingle << false if side <= 0}
+    raise TriangleError if real_triangle.include?(false)
   end
 
   class TriangleError < StandardError
