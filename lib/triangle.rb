@@ -10,7 +10,7 @@ class Triangle
   end
 
   def kind
-    validate_traingle
+    validate_triangle
     if a == b && b == c
       :equilateral
     elsif a == b || b == c || a == c
@@ -20,7 +20,7 @@ class Triangle
     end
   end
 
-  def validate_traingle
+  def validate_triangle
     real_triangle = [(a + b > c), (b + c > a), (a + c > b)]
     [a, b, c].each{|side| real_triangle << false if side <= 0}
     raise TriangleError if real_triangle.include?(false)
