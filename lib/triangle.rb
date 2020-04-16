@@ -21,8 +21,8 @@ class Triangle
   end
 
   def validate_traingle
-    real_traingle = [(a + b > c), (b + c > a), (a + c > b)]
-    [a, b, c].each{|side| real_traingle << false if side <= 0}
+    real_triangle = [(a + b > c), (b + c > a), (a + c > b)]
+    [a, b, c].each{|side| real_triangle << false if side <= 0}
     raise TriangleError if real_triangle.include?(false)
   end
 
